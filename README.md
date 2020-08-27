@@ -11,7 +11,15 @@ The following steps will walk you thru installation on a Mac. Linux should be si
 ### Download or clone the project 
 Open your terminal then run the command ``git clone https://github.com/mbrsagor/blog/``
 
-Then install virtualenv in your project directory and active the virtualenv. `source bin/active` Then follow the command
+#### Create a python virtual environment:
+Then install and create virtualenv in your project directory and active the virtualenv. `` Then follow the command
+
+```
+virtualenv venv --python=python3.8
+source venv bin/active
+```
+After that run the project on your local development server. Please you may follow the commands. Hopefully It's will 
+be work.
 
 ```
 pip install -r requirements.txt
