@@ -10,7 +10,9 @@
         <li class="list-group-item active">Blog Categories</li>
         {% if categories %}
             {% for cat in categories %}
-                <li class="list-group-item">{{ cat.name }} || Created Date : {{ cat.created_at }}</li>
+                <li class="list-group-item">{{ cat.name }} || Created Date : {{ cat.created_at }} <span
+                        class="ml-5 btn-danger btn-sm"><a href="
+{% url 'category_delete' cat.id %}">Delete</a></span></li>
             {% endfor %}
         {% endif %}
     </ul>

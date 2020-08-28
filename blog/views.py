@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post,Category
+from django.shortcout import redirect
+from .models import Post, Category
 
 
 def homepage(request):
@@ -13,10 +14,15 @@ def homepage(request):
 
 def categories_views(request):
     categories = Category.objects.all()
-    context = {"categories" : categories}
+    context = {"categories": categories}
     tamplate_name = 'categories.html'
-    return render(request,tamplate_name,context)
+    return render(request, tamplate_name, context)
 
+
+def categoryDelete_views(request, id):
+    delete_category = get_object_or_404(Category, id=id)
+    delete_category.delete()
+    return redirect('/')
 
 
 def detail(request, id):
