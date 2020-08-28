@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Categories {% endblock %}
+
+{% block content %}
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item active">Blog Categories</li>
+        {% if categories %}
+            {% for cat in categories %}
+                <li class="list-group-item">{{ cat.name }} || Created Date : {{ cat.created_at }}</li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+{% endblock %}
