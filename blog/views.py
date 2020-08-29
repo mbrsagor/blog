@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from django.shortcout import redirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import authenticate, login, logout
 from .models import Post, Category
 
 
@@ -37,3 +37,23 @@ def detail(request, id):
 def about(request):
     template_name = 'about.html'
     return render(request, template_name)
+
+
+def login_views(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        auth = authenticate(username=username, password=password)
+
+        if auth is not None:
+            login(request, auth)
+            return redirect('/')
+        else:
+            print("Sorry! Invalid Username And password")
+    template_name = 'login.html'
+    return render(request, template_name)
+
+
+def logout_views(request):
+    logout(request)
+    return redirect(login_views)
