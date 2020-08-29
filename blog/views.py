@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
 from .models import Post, Category
 
 
@@ -34,6 +36,7 @@ def detail(request, id):
     return render(request, template_name, context)
 
 
+@login_required(login_url='/login/')
 def about(request):
     template_name = 'about.html'
     return render(request, template_name)
@@ -47,7 +50,7 @@ def login_views(request):
 
         if auth is not None:
             login(request, auth)
-            return redirect('/')
+            return redirect('/about/')
         else:
             print("Sorry! Invalid Username And password")
     template_name = 'login.html'
