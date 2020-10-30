@@ -11,7 +11,7 @@ class CategoryType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    heroes = graphene.List(CategoryType)
+    categories = graphene.List(CategoryType)
 
-    def resolve_heroes(self, info, **kwargs):
+    def resolve_categories(self, info, **kwargs):
         return Category.objects.all()
