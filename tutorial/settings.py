@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Custom app
     'blog',
     'graph',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Graph QL
+GRAPHENE = {
+    "SCHEMA": "graph.schema.schema"
+}
